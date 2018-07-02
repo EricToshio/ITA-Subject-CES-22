@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1>Logado como {{name}} </h1>
+        {% if files %}
+        <h2>Arquivos do enviados:</h2>
+        {% for file in files %}
+        <h3><a href={{"/dowload/"+file}}>{{file}}</a></h3>
+        {% endfor %}
+        {% else %}
+        <h2>Não existem arquivos enviados pelo seu usuário.</h2>
+        {% endif %}
+        
+
+        <h2><a href = '/upload'>Enviar arquivos</a></h2>
+        <h2><a href = '/logout'>Logout</a></h2>
+    </body>
+</html>

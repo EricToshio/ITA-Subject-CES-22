@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+   <body>
+      <h1>BEM-VINDO AO SEU SITE DE UPLOAD!</h1>
+      <h2>Cada sessão possui seus proprio arquivos,</h2> 
+      <h2>sessões feitas no Browser serão salvas nos Cookies para facilitar posterior re-logins.</h2>
+
+      {% if user %}
+      <h4>O ultimo usuário a fazer login neste browser foi:</h4>
+         <h4>{{ user }}</h4>
+      {% else %}
+      <h4>Por enquanto, não foi feito o login de nenhum sessão neste browser.</h4>
+      {% endif %}
+      <h1>
+         <a href='/login'>Faça o login</a>
+      </h1>
+   </body>
+</html>
