@@ -1,3 +1,10 @@
+# Exercícios
+1) Desenvolver uma aplicação Flask usando cookies.
+2) Desenvolver uma aplicação Flask usando sessões.
+3) Desenvolva uma aplicação que permita carregar arquivos em um servidor, listar e acessar arquivos no servidor.
+
+# Solução
+
 O arquivo 'main.py' é uma aplicação o qual guarda arquivos de acordo com o usuário logado.
 Ela serve como solução dos tres exercícios abaixo:
 

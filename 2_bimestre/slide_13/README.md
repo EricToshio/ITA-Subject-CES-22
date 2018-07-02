@@ -1,7 +1,7 @@
-# Exercício:
+# Exercício
 Identifique no Projeto do Grupo situações onde os princípios SOLID poderiam ser (ou foram) aplicados.
 
-#
+# Projeto
 O Projeto do grupo se encontra no link "https://github.com/EricToshio/Rede_Portal".
 O objetivo do projeto é a criação de um site para o H8, ele foi realizado utilizando a framework  Django.
 
@@ -19,7 +19,6 @@ class ReservationRede(models.Model):
     reservation_date = models.DateTimeField()
     status = models.CharField(default="pendente", max_length=20)
 ```
-
 
 ## Open Closed Design
 Várias classes do projeto seguem o princípio "open closed design". Por exemplo tem-se a classe IssueForm, o qual descreve as características do formulário de reclamação de problemas no H8. Esse classe é facilmente utilizada para a criação de forms nas views, porém difícil de modifica-lo.
@@ -51,8 +50,28 @@ class Migration(migrations.Migration):
         ),
     ]
 ```
+
 ## Interface Segregation
-
-
+Como já dito anteriormente, um dos objetivos da framework Django é o desenvolvimento rápido de aplicações. E uma das formas de fazer isso é reduzir ao máximo o desenvolvimento das interfaces e suas relações. Por isso, não houve quase nenhuma implementação direta de toda uma interface.
+No entanto, o princípio de "interface segregation" poderia ser utilizado numa classe "Server_Helper", a qual ajudaria obter dados da situação da internet no H8. Nessa classe poderia ter sido utilizado a interfaces de leitura e obtenção de dados específicos do "json" gerado no servidor. 
+```python
+def redecasd_status():
+    with open('redecasd_info.json') as f:
+        data = json.load(f)
+    return data
+```  
 
 ## Dependency Injection
+Este princípio tem como base a ideia de que detalhes devem ser implementados sobre abstrações. No exemplo abaixo a classe News (detalhe) é implementado sobre a classe abstrata (models.Model). 
+```python
+class News(models.Model):
+    title = models.TextField(validators=[MaxLengthValidator(30)], default = 'Title')
+    sub_title = models.TextField(validators=[MaxLengthValidator(50)], default = 'Sub-titulo')
+    iniciativa_name = models.CharField(max_length=100)
+    text = models.TextField()
+    pub_date = models.DateTimeField('date published', default = timezone.now())
+    pic = models.ImageField(upload_to = get_image_path, default = 'home/static/home/images/casd.png')
+    
+    def pic_url(self):
+        return self.pic.url[4:]
+```
